@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <!--===== Basic Images =====-->
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+    <!--===== CSS =====-->
+    <link rel="stylesheet" href="css/styles.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="contacts">
+            <header class="contacts__header">Choose your friends</header>
+            <p class="contacts__desc">Drag and drop items between lists or click on appropriate buttons</p>
+            <div class="contacts__search">
+                <div class="contacts__search-group">
+                    <input class="contacts__search-input" type="text" placeholder="Enter a name" data-bind="main-list">
+                </div>
+                <div class="contacts__search-group">
+                    <input class="contacts__search-input" type="text" placeholder="Enter a name" data-bind="fav-list">
+                </div>
+            </div>
+
+            <div class="contacts__panel contacts__panel--main">
+                <h2 class="contacts__panel-title">All contacts</h2>
+            </div>
+            <div class="contacts__panel contacts__panel--fav">
+                <h2 class="contacts__panel-title">Favourite contacts</h2>
+            </div>
+
+            <footer class="contacts__footer">
+                <button class="contacts__btn contacts__btn--save" data-action="save">Save</button>
+            </footer>
+        </div>
+    </div>
+
+        <script type="text/x-handlebars-template" data-role="main-list-Template">
+            <ul class="contacts__list droppable" data-role="main-list">
+                {{#each list}}
+                <li class="contacts__item draggable">
+                        <div class="contacts__image-wrap">
+                            <img class="contacts__image" src="{{image}}" alt="{{name}}">
+                        </div>
+                        <div class="contacts__name">{{name}}</div>
+                        <a class="contacts__link contacts__link--add " href="#" data-action="add-item"></a>
+                    </li>
+                {{/each}}
+            </ul>
+        </script>
+        <script type="text/x-handlebars-template" data-role="fav-list-Template">
+            <ul class="contacts__list droppable" data-role="fav-list">
+                {{#each list}}
+                <li class="contacts__item draggable">
+                        <div class="contacts__image-wrap">
+                            <img class="contacts__image" src="{{image}}" alt="{{name}}">
+                        </div>
+                        <div class="contacts__name">{{name}}</div>
+                        <a class="contacts__link contacts__link--del " href="#" data-action="del-item"></a>
+                    </li>
+                {{/each}}
+            </ul>
+        </script>
+
+    <!--===== Load JS =====-->
+    <script src="js/bundle.js"></script>
+</body>
+</html>
